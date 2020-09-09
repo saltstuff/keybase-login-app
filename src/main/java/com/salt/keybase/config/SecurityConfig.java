@@ -1,7 +1,7 @@
 package com.salt.keybase.config;
 
-import com.salt.keybase.ChallengeAuthenticationFilter;
-import com.salt.keybase.KeybaseAuthenticationProvider;
+import com.salt.keybase.auth.KeybaseAuthenticationProvider;
+import com.salt.keybase.filters.KeybaseAuthenticationFilter;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,7 +14,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // Add ChallengeAuthenticationFilter before the
+        // Add KeybaseAuthenticationFilter before the
         // UsernamePasswordAuthenticationFilter
         // To make sure that the filter is not set too low in priority
 
@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/user/**")
             .hasAuthority("ROLE_USER")
             .and()
-            .addFilterBefore(new ChallengeAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+            .addFilterBefore(new KeybaseAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
             .logout()
             .logoutSuccessUrl("/index")
             .permitAll();

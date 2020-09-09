@@ -1,13 +1,9 @@
 package com.salt.keybase.controllers;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.Date;
-
 import javax.annotation.security.RolesAllowed;
 
 import com.salt.keybase.dataobjects.Challenge;
-import com.salt.keybase.utils.AESUtils;
+import com.salt.keybase.utils.ChallengeUtils;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,14 +26,9 @@ public class MainController {
 
 	@RequestMapping("/challenge")
 	public String getChallenge(Model model) throws Exception {
-		String timeinmillis=Long.toString(new Date().getTime());
-		byte[] iv=AESUtils.getInstance().getRandomNonce();
-		String encryptedMessage=Base64.getEncoder().encodeToString(AESUtils.getInstance().encrypt(timeinmillis.getBytes(StandardCharsets.UTF_8), iv));
-		
-		String encodedIv=Base64.getEncoder().encodeToString(iv);
-		
-		Challenge unsignedChallenge=new Challenge(encryptedMessage,encodedIv);
-		model.addAttribute("unsignedchallenge", unsignedChallenge.toString());
+		Challenge challenge=ChallengeUtils.generateChallenge();
+		model.addAttribute("challenge", challenge.getEncryptedChallenge());
+		model.addAttribute("iv", challenge.getEncodedIV());
 		return "challenge";
 	}
 	

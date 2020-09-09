@@ -20,13 +20,13 @@
       
       <h1 class="h3 mb-3 font-weight-normal">Sign this challenge</h1>
       <p>Please copy this command line instruction to sign the challenge with Keybase and PGP</p>
-      <div class="alert alert-primary" role="alert" th:text="${unsignedchallenge}">keybase sign pgp -m  </div>
-      
-      <h1 class="h3 mb-3 font-weight-normal">Provide the signed challenge</h1>
+      <div class="alert alert-primary" role="alert">keybase pgp sign -m &quot;<span th:text="${challenge}" th:remove="tag"></span>&quot;</div>
+      keybase sign pgp -m &quot;
+      <h1 class="h3 mb-3 font-weight-normal">Provide the signed response ciphertext</h1>
       <p>a signed challenge to log in</p>
-      <label for="signedchallenge" class="sr-only">Signed Challenge</label>
-      <textarea class="form-control" name="signedchallenge" id="signedchallenge" rows="20" placeholder="signed challenge" required autofocus></textarea>
-      
+      <label for="signedresponseCipher" class="sr-only">Signed Response Ciphertext</label>
+      <textarea class="form-control" name="signedresponseCiphertext" id="signedresponseCiphertext" rows="20" placeholder="signed response ciphertext" required autofocus></textarea>
+      <input type="hidden" th:value="${iv}" name="iv" id="iv">
       <input class="btn btn-lg btn-primary btn-block" type="submit" value="Log in">
       
       <p class="mt-5 mb-3 text-muted">&copy; 2020</p>

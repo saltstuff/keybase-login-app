@@ -1,36 +1,36 @@
 package com.salt.keybase.dataobjects;
 
 public class Challenge {
-    private String encryptedMessage;
-    private String iv;
+    private String timeinmillis;
+    private String encryptedChallenge;
+    private String encodedIV;
 
-    public Challenge(String concatenatedMessage) {
-        if (concatenatedMessage!=null) {
-            String[] challengeElements=concatenatedMessage.split(",");
-            if (challengeElements.length>1) {
-                this.encryptedMessage = challengeElements[0];
-                this.iv = challengeElements[1];
-            }
-        }
+    public Challenge() {        
     }
 
-    public Challenge(String encryptedMessage, String iv) {
-        this.encryptedMessage = encryptedMessage;
-        this.iv = iv;
-    }  
-
-    public String getEncryptedMessage() {
-        return encryptedMessage;
+    public String getTimeinmillis() {
+        return timeinmillis;
     }
 
-    public String getIv() {
-        return iv;
+
+    public void setTimeinmillis(String timeinmillis) {
+        this.timeinmillis = timeinmillis;
     }
 
-    @Override
-    public String toString() {
-        return encryptedMessage+","+iv;
+
+    public String getEncryptedChallenge() {
+        return encryptedChallenge;
     }
 
-    
+    public void setEncryptedChallenge(String encryptedChallenge) {
+        this.encryptedChallenge = encryptedChallenge;
+    }
+
+    public String getEncodedIV() {
+        return encodedIV;
+    }
+
+    public void setEncodedIV(String encodedIV) {
+        this.encodedIV = encodedIV;
+    }
 }

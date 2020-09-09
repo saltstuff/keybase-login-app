@@ -21,7 +21,8 @@ public class AESUtils {
     private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
     private static AESUtils INSTANCE;
-     
+    
+    // Hide default constructor, as this is a Singleton class
     private AESUtils() throws NoSuchAlgorithmException {
         KeyGenerator keyGen = KeyGenerator.getInstance("AES");
         keyGen.init(AES_KEY_BIT, SecureRandom.getInstanceStrong());

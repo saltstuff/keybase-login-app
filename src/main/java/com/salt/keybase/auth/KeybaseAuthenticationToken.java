@@ -1,32 +1,33 @@
-package com.salt.keybase;
+package com.salt.keybase.auth;
 
 import java.util.Collection;
 
+import com.salt.keybase.dataobjects.SignedResponse;
 import com.salt.keybase.dataobjects.UserPrincipal;
 
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.SpringSecurityCoreVersion;
 
-public class SignedChallengeAuthenticationToken extends AbstractAuthenticationToken {
+public class KeybaseAuthenticationToken extends AbstractAuthenticationToken {
 
     private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
 
     private final UserPrincipal principal;
 
-    private String signedChallenge;
+	private SignedResponse signedResponse;
 
-	public SignedChallengeAuthenticationToken(String signedUnverifiedChallenge) {
+	public KeybaseAuthenticationToken(SignedResponse signedResponse) {
 		super(null);
-        this.principal = null;
-        this.signedChallenge=signedUnverifiedChallenge;
-		setAuthenticated(false);
+		this.principal = null;
+		this.signedResponse=signedResponse;
+		super.setAuthenticated(false);
 	}
 
-	public SignedChallengeAuthenticationToken(UserPrincipal principal, Collection<? extends GrantedAuthority> authorities, String signedVerifiedChallenge) {
+	public KeybaseAuthenticationToken(UserPrincipal principal, Collection<? extends GrantedAuthority> authorities, SignedResponse signedResponse) {
 		super(authorities);
         this.principal = new UserPrincipal(principal.getUsername(), authorities);
-        this.signedChallenge=signedVerifiedChallenge;
+		this.signedResponse=signedResponse;
 		super.setAuthenticated(true); // must use super, as we override
 	}
     // No such thing as credentials as user is authenticated by a verified challenge
@@ -34,8 +35,8 @@ public class SignedChallengeAuthenticationToken extends AbstractAuthenticationTo
 		return null;
     }
     
-    public String getSignedChallenge() {
-		return signedChallenge;
+    public SignedResponse getSignedResponse() {
+		return signedResponse;
 	}
 
 
@@ -55,6 +56,6 @@ public class SignedChallengeAuthenticationToken extends AbstractAuthenticationTo
 	@Override
 	public void eraseCredentials() {
 		super.eraseCredentials();
-        this.signedChallenge=null;
+        this.signedResponse=null;
 	}
 }
