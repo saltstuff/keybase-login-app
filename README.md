@@ -75,9 +75,12 @@ Open a browser and navigate to http://localhost:8080. The following screen appea
 
 ![App Screenshot](screenshots/1.png)
 
+
 Click on *Sign in to start*. The next screen appears:
 
+
 ![App Screenshot](screenshots/2.png)
+
 
 Copy and paste the challenge, including the keybase command. Open a terminal and execute the command:
 
@@ -87,15 +90,19 @@ keybase pgp sign -m "Z0IhzmFmlBz2Jwlea+57nB/m4WRvYXCX6okCEdg="
 
 Copy the output from the terminal ...
 
+
 ![App Screenshot](screenshots/3.png)
+
 
 ... and paste it in the browser window of the app.
 
+
 ![App Screenshot](screenshots/4.png)
+
 
 Click *Log in* and you will be logged in! Your username is displayed on a secure page, and your role within the app [ROLE_USER].
 
+
 ![App Screenshot](screenshots/5.png)
 
-
-
+End of the demo.
