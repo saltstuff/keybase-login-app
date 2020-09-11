@@ -10,11 +10,11 @@ First a quick summary of Keybase: Keybase is a social networking platform, where
 
 
 ## Public-Key Cryptography
-Now the cool thing is, anybody in the world can send a user on Keybase an encrypted message or file and be ensured that only the recipient can decrypt and read it. Why? Because of public-Key Cryptography: I just need to look up the public key of the intended recipient, and then encrypt the message and send it. The receiver is the only person in the world who can decrypt the message, using his/her private key. This private key is private, because it is, unlike passwords or other tokens, never sent across the wire or ether and never shared with anyone. Instead, the private key is securely stored on the device, by the Keybase mobile or desktop apps.
+Now the cool thing is, anybody in the world can send a user on Keybase an encrypted message or file and be ensured that only the recipient can decrypt and read it. Why? Because of public-key Cryptography: I just need to look up the public key of the intended recipient, and then encrypt the message and send it. The receiver is the only person in the world who can decrypt the message, using his/her private key. This private key is private, because it is, unlike passwords or other tokens, never sent across the wire or ether and never shared with anyone. Instead, the private key is securely stored on the device, by the Keybase mobile or desktop apps.
 
 
 ## Encryption and signing
-Something that blew my mind years ago when I dived into public-key cryptography, is that there is another very useful purpose: signing and verification. It is the opposite of encryption mathematically: If I want to proof my identity to another user, I need to send a message and encrypt it with my private key. The other user verifies the message by decrypting it with my public key. That way, my identity is proven as I am the only holder of the private key.
+Something that blew my mind years ago when I dived into public-key cryptography, is that there is another very useful purpose: signing and verification. It is mathematically the opposite of encryption: If I want to prove my identity to another user, I need to send a message and encrypt it with my private key. The other user verifies the message by decrypting it with my public key. That way, my identity is proven as I am the only holder of the private key.
 
 
 ## Proof of Identity and authenticating users: the keybase-login-app
