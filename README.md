@@ -64,7 +64,7 @@ git clone https://github.com/saltstuff/keybase-login-app.git
 cd keybase-login-app
 ```
 
-**3. Move into the directory and build/run the app**
+**3. Build/run the app**
 ```bash
 mvnw spring-boot:run
 ```
